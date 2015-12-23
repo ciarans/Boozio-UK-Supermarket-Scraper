@@ -1,5 +1,6 @@
 # Boozio - Alcohol Price Scrapper
-Boozio Price Matcher for Booze (Or anything) by Scrapping UK Supermarkets - Supports Asda, Tesco, Waitrose and Morrisons
+Boozio is a Price Matcher for Booze (Or anything) by Scrapping UK Supermarkets - Supports Asda, Tesco, Waitrose and Morrisons.
+This is not affiliated with any Supermarkets.
 
 ## Installation
 
@@ -46,7 +47,7 @@ Once you have a Basket Object you can run the following  commands to get the dat
 	echo "To Array: \n";
 	print_r($item->toArray());
   ```
-# Full Example
+## Full Example
 
   ```php
 	require 'lib/autoload.php';
@@ -70,3 +71,10 @@ Once you have a Basket Object you can run the following  commands to get the dat
 	echo "To Array: \n";
 	print_r($item->toArray());
   ```
+ ## Where is Sainsburys?
+
+Oh Sainsburys! They use JSP on there Server side and have a funny redirect when setting a Cookie so actually getting the data means have a more advance CUrl Class that implements a Cookie Jar. Hopefully, this will be V2.
+
+## Contact
+
+If you have any questions  feel free to email me - hello@synnott.co.uk
