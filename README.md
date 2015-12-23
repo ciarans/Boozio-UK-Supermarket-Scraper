@@ -38,15 +38,42 @@ Once you have a Basket Object you can run the following  commands to get the dat
 
   ```php
 	echo "SKU: ".$item->get_sku()."\n";
-	echo "Supermarket: ".$item->get_supermarket()."\n";
-	echo "Item Name: ".$item->get_item_name()."\n";
-	echo "Price: ".$item->get_price()."\n";
-	echo "On Offer: ".$item->get_on_offer()."\n";
-	echo "To JSON: ".$item->toJSON()."\n";
-	echo "To XML: \n".$item->toXML()."\n";
-	echo "To Array: \n";
+	echo "Supermarket:\t".$item->get_supermarket()."\n";
+	echo "Item Name:\t".$item->get_item_name()."\n";
+	echo "Price:\t".$item->get_price()."\n";
+	echo "On Offer:\t".$item->get_on_offer()."\n";
+	echo "To JSON:\t".$item->toJSON()."\n\n";
+	echo "To XML:\t\n\n".$item->toXML()."\n";
+	echo "To Array:\t\n\n";
 	print_r($item->toArray());
   ```
+This will give you the following output;
+
+```
+	SKU: 210564011
+	Supermarket:	Morrisons
+	Item Name:	Kronenbourg 1664 Bottles 
+	Price:	7.00
+	On Offer:	no
+	To JSON:	{"sku":210564011,"supermarket":"Morrisons","item_name":"Kronenbourg 1664 Bottles ","price":"7.00","on_offer":"no"}
+	
+	To XML:	
+	
+	<?xml version="1.0"?>
+	<root><sku>210564011</sku><supermarket>Morrisons</supermarket><item_name>Kronenbourg 1664 Bottles </item_name><price>7.00</price><on_offer>no</on_offer></root>
+	
+	To Array:	
+	
+	Array
+	(
+	    [sku] => 210564011
+	    [supermarket] => Morrisons
+	    [item_name] => Kronenbourg 1664 Bottles 
+	    [price] => 7.00
+	    [on_offer] => no
+	)
+```
+  
 ## Full Example
 
   ```php
