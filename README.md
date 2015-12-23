@@ -12,7 +12,7 @@ Click the `download` link above or `git clone git://github.com/ciarans/boozio.gi
 Simply Require the autoload file and then pull in what Supermarkets you are looking for.
 
   ```php
-	require_once 'lib/autoload.php';
+  require_once 'lib/autoload.php';
   $asda = new Boozio\Supermarkets\Asda();
   $tesco = new Boozio\Supermarkets\Tesco();
   $waitrose = new Boozio\Supermarkets\Waitrose();
@@ -33,4 +33,16 @@ All you need is the unique ID the supermarkets use for each product and pass it 
 
 ### The Basket Item Object
 
-  
+Once you have a Basket Object you can run the following  commands to get the data
+
+  ```php
+	echo "SKU: ".$item->get_sku()."\n";
+	echo "Supermarket: ".$item->get_supermarket()."\n";
+	echo "Item Name: ".$item->get_item_name()."\n";
+	echo "Price: ".$item->get_price()."\n";
+	echo "On Offer: ".$item->get_on_offer()."\n";
+	echo "To JSON: ".$item->toJSON()."\n";
+	echo "To XML: \n".$item->toXML()."\n";
+	echo "To Array: \n";
+	print_r($item->toArray());
+  ```
