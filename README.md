@@ -1,5 +1,5 @@
 # Boozio - Alcohol Price Scrapper
-Boozio is a Price Matcher for Booze (Or anything) by Scrapping UK Supermarkets - Supports Asda, Tesco, Waitrose and Morrisons.
+Boozio is a Price Matcher for Booze (Or anything) by Scrapping UK Supermarkets - Supports Asda, Tesco, Waitrose, Ocado and Morrisons.
 This is not affiliated with any Supermarkets.
 
 ## Installation
@@ -18,6 +18,7 @@ Simply Require the autoload file and then pull in what Supermarkets you are look
   $tesco = new Boozio\Supermarkets\Tesco();
   $waitrose = new Boozio\Supermarkets\Waitrose();
   $morrisons = new Boozio\Supermarkets\Morrisons();
+  $ocado = new Boozio\Supermarkets\Ocado();
   ```
   
 You can pull in as many or as little supermarkets as you like. 
