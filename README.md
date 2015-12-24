@@ -1,5 +1,5 @@
-# Boozio - Alcohol Price Scrapper
-Boozio is a Price Matcher for Booze (Or anything) by Scrapping UK Supermarkets - Supports Asda, Tesco, Waitrose, Ocado and Morrisons.
+# Boozio - Alcohol Price Scraper
+Boozio is a Price Matcher for Booze (Or anything) by Scraping UK Supermarkets - Supports Asda, Tesco, Waitrose, Ocado and Morrisons.
 This is not affiliated with any Supermarkets.
 
 ## Installation
@@ -37,6 +37,7 @@ $bombay_sapphire_1l = (object) array(
         );
   $item = $ocado->fetch($bombay_sapphire_1l->ocado);
   ```
+
 ````$item``` will then contain a Basket Item Object.
 
 ### The Basket Item Object
