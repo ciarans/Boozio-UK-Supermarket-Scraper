@@ -46,46 +46,67 @@ Once you have a Basket Object you can run the following  commands to get the dat
 
   ```php
 	echo "SKU: ".$item->get_sku()."\n";
-	echo "Supermarket:\t".$item->get_supermarket()."\n";
-	echo "Item Name:\t".$item->get_item_name()."\n";
-	echo "Price:\t".$item->get_price()."\n";
-	echo "On Offer:\t".$item->get_on_offer()."\n";
-	echo "To JSON:\t".$item->toJSON()."\n\n";
-	echo "To XML:\t\n\n".$item->toXML()."\n";
-	echo "To Array:\t\n\n";
+	echo "Supermarket:".$item->get_supermarket()."\n";
+	echo "Item Name:".$item->get_item_name()."\n";
+	echo "Price:".$item->get_price()."\n";
+	echo "On Offer:".$item->get_on_offer()."\n";
+	echo "To JSON:".$item->toJSON()."\n\n";
+	echo "To XML:\n\n".$item->toXML()."\n";
+	echo "To Array:\n\n";
 	print_r($item->toArray());
   ```
 This will give you the following output;
 
 ```
-	SKU: 210564011
-	Supermarket:	Morrisons
-	Item Name:	Kronenbourg 1664 Bottles 
-	Price:	7.00
-	On Offer:	no
-	To JSON:	{"sku":210564011,"supermarket":"Morrisons","item_name":"Kronenbourg 1664 Bottles ","price":"7.00","on_offer":"no"}
-	
-	To XML:	
-	
-	<?xml version="1.0"?>
-	<root><sku>210564011</sku><supermarket>Morrisons</supermarket><item_name>Kronenbourg 1664 Bottles </item_name><price>7.00</price><on_offer>no</on_offer></root>
-	
-	To Array:	
-	
-	Array
-	(
-	    [sku] => 210564011
-	    [supermarket] => Morrisons
-	    [item_name] => Kronenbourg 1664 Bottles 
-	    [price] => 7.00
-	    [on_offer] => no
-	)
+
+        SKU: 23690011
+        Supermarket: Ocado
+        Item Name: Bombay Sapphire Gin 
+        Price: 18.00
+        On Offer: yes
+        To JSON: {"sku":23690011,"supermarket":"Ocado","item_name":"Bombay Sapphire Gin ","price":"18.00","on_offer":"yes"}
+
+        To XML: 
+
+        <?xml version="1.0"?>
+        <root><sku>23690011</sku><supermarket>Ocado</supermarket><item_name>Bombay Sapphire Gin </item_name><price>18.00</price><on_offer>yes</on_offer></root>
+
+        To Array: 
+
+        Array
+        (
+            [sku] => 23690011
+            [supermarket] => Ocado
+            [item_name] => Bombay Sapphire Gin 
+            [price] => 18.00
+            [on_offer] => yes
+        )
 ```
   
 ## Full Example
 
-You can view a full example in the ``example.php`` file.
-
+  ```php
+	require 'lib/autoload.php';
+	
+	$asda = new Boozio\Supermarkets\Asda();
+	$tesco = new Boozio\Supermarkets\Tesco();
+	$waitrose = new Boozio\Supermarkets\Waitrose();
+	$morrisons = new Boozio\Supermarkets\Morrisons();
+	
+	$morrions_bombat_saphire_gin_1_litre = 210564011;
+	
+	$item = $morrisons->fetch($morrions_bombat_saphire_gin_1_litre);
+	
+	echo "SKU: ".$item->get_sku()."\n";
+	echo "Supermarket: ".$item->get_supermarket()."\n";
+	echo "Item Name: ".$item->get_item_name()."\n";
+	echo "Price: ".$item->get_price()."\n";
+	echo "On Offer: ".$item->get_on_offer()."\n";
+	echo "To JSON: ".$item->toJSON()."\n";
+	echo "To XML: \n".$item->toXML()."\n";
+	echo "To Array: \n";
+	print_r($item->toArray());
+  ```
 ## Where is Sainsburys?
 
 Oh Sainsburys! They use JSP on there Server side and have a funny redirect when setting a Cookie so actually getting the data means have a more advance CUrl Class that implements a Cookie Jar. Hopefully, this will be V2.
