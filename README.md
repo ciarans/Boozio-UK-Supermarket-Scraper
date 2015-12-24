@@ -28,8 +28,15 @@ You can pull in as many or as little supermarkets as you like.
 All you need is the unique ID the supermarkets use for each product and pass it to the ````fetch()``` command
 
   ```php
-  $morrions_bombat_saphire_gin_1_litre = 210564011;
-  $item = $morrisons->fetch($morrions_bombat_saphire_gin_1_litre);
+  
+$bombay_sapphire_1l = (object) array(
+            "tesco" => 252695240,
+            "asda" => 512843,
+            "waitrose" => 34657,
+            "morrisons" => 217561011
+        );
+  
+  $item = $morrisons->fetch($bombay_sapphire_1l->morrisons);
   ```
 ````$item``` will then contain a Basket Item Object.
 
