@@ -65,7 +65,12 @@ class CUrl {
             return false;
         }
     }
-
+    
+    /**
+     * Performs a CUrl request and returns the cookies
+     * 
+     * @return array 
+     */
     public function cookie_fetch() {
         $ch = curl_init();
 

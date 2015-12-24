@@ -7,7 +7,6 @@ $tesco = new Boozio\Supermarkets\Tesco();
 $waitrose = new Boozio\Supermarkets\Waitrose();
 $morrisons = new Boozio\Supermarkets\Morrisons();
 $ocado = new Boozio\Supermarkets\Ocado();
-$sainsburys = new Boozio\Supermarkets\Sainsburys();
 
 $bombay_sapphire_1l = (object) array(
             "tesco" => 252695240,
@@ -18,7 +17,7 @@ $bombay_sapphire_1l = (object) array(
             "sainsburys" => 18718
         );
 
-  $item = $sainsburys->fetch($bombay_sapphire_1l->sainsburys);
+  $item = $morrisons->fetch($bombay_sapphire_1l->morrisons);
 
 echo "SKU: ".$item->get_sku()."\n";
 echo "Supermarket: ".$item->get_supermarket()."\n";
