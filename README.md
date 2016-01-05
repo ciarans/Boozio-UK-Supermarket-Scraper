@@ -1,8 +1,10 @@
 # Boozio - Alcohol Price Scraper
-Boozio is a Price Matcher for Booze (Or anything) by Scraping UK Supermarkets - Supports Asda, Tesco, Waitrose, Ocado and Morrisons.
+Boozio is a Price Matcher for Booze (Or anything) by Scraping UK Supermarkets - Supports Sainsburys, Asda, Tesco, Waitrose, Ocado and Morrisons.
 This is not affiliated with any Supermarkets.
 
 ## Installation
+
+You will need `curl` insalled on your php server to run this.
 
 Click the `download` link above or `git clone git://github.com/ciarans/boozio.git`
 
@@ -14,6 +16,7 @@ Simply Require the autoload file and then pull in what Supermarkets you are look
 
   ```php
   require_once 'lib/autoload.php';
+  $sains = new Boozio\Supermarkets\Sainsburys();
   $asda = new Boozio\Supermarkets\Asda();
   $tesco = new Boozio\Supermarkets\Tesco();
   $waitrose = new Boozio\Supermarkets\Waitrose();
@@ -33,7 +36,8 @@ $bombay_sapphire_1l = (object) array(
             "asda" => 512843,
             "waitrose" => 34657,
             "morrisons" => 217561011,
-            "ocado" => 23690011
+            "ocado" => 23690011,
+            "sainsburys" => 18718
         );
   $item = $ocado->fetch($bombay_sapphire_1l->ocado);
   ```
@@ -92,6 +96,7 @@ This will give you the following output;
 	$tesco = new Boozio\Supermarkets\Tesco();
 	$waitrose = new Boozio\Supermarkets\Waitrose();
 	$morrisons = new Boozio\Supermarkets\Morrisons();
+	$sainsburys = new Boozio\Supermarkets\Sainsburys();
 	
 	$morrions_bombat_saphire_gin_1_litre = 210564011;
 	
@@ -107,10 +112,6 @@ This will give you the following output;
 	echo "To Array: \n";
 	print_r($item->toArray());
   ```
-## Where is Sainsburys?
-
-Oh Sainsburys! They use JSP on there Server side and have a funny redirect when setting a Cookie so actually getting the data means have a more advance CUrl Class that implements a Cookie Jar. Hopefully, this will be V2.
-
 ## Contact
 
 If you have any questions  feel free to email me - hello@synnott.co.uk
