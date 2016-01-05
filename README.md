@@ -1,4 +1,4 @@
-# Boozio - Alcohol Price Scraper
+# Boozio - UK Supermarket Scraper
 Boozio is a Price Matcher for Booze (Or anything) by Scraping UK Supermarkets - Supports Sainsburys, Asda, Tesco, Waitrose, Ocado and Morrisons.
 This is not affiliated with any Supermarkets.
 
