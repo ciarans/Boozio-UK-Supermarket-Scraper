@@ -8,7 +8,7 @@
  * 
  * @author Ciaran Synnott 
  * @package Boozio
- * @subpackage Basket
+ * @subpackage CUrl
  * 
  * Simple CUrl Class to get scrape the websites;
  * 
