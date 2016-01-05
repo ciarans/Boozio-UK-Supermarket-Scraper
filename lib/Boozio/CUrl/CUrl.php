@@ -42,20 +42,12 @@ class CUrl {
      * 
      * @return bool Returns true if response is 200 - false if not;
      */
-    public function go_fetch($cookies = array()) {
+    public function go_fetch() {
         $ch = curl_init();
 
-        if (!empty($cookies)) {
-            $_cookie_jar = array();
-            foreach ($cookies as $c) {
-                $_cookie_jar[] = "Cookie:" . $c;
-            }
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $_cookie_jar);            
-        }
-        
         curl_setopt($ch, CURLOPT_URL, $this->url);
         curl_setopt($ch, CURLOPT_USERAGENT, self::CURL_USER_AGENT);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, self::CURL_TIMEOUT);
         $this->set_response(curl_exec($ch));
         $this->set_status_code(curl_getinfo($ch, CURLINFO_HTTP_CODE));
@@ -65,13 +57,33 @@ class CUrl {
             return false;
         }
     }
-    
+
     /**
-     * Performs a CUrl request and returns the cookies
+     * Extracts cookies from cURL result
      * 
-     * @return array 
+     * @return array $cookies Returns array of cookies;
+     */    
+    private function extract_cookies($result) {
+        list($header, $body) = explode("\r\n\r\n", $result, 2);
+        $end = strpos($header, 'Content-Type');
+        $start = strpos($header, 'Set-Cookie');
+        $parts = explode('Set-Cookie:', substr($header, $start, $end - $start));
+        $cookies = array();
+        foreach ($parts as $co) {
+            $cd = explode(';', $co);
+            if (!empty($cd[0]))
+                $cookies[] = $cd[0];
+        }
+        return $cookies;
+    }
+
+    /**
+     * Performs a CUrl request on the given URL to fetch the data - then it
+     * gets the cookies and performs another curl request.
+     * 
+     * @return bool Returns true if response is 200 - false if not;
      */
-    public function cookie_fetch() {
+    public function cookie_curl() {
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $this->url);
@@ -83,11 +95,25 @@ class CUrl {
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, false);
         curl_setopt($ch, CURLOPT_VERBOSE, true);
 
-        $header = curl_exec($ch);
-        $cookies = array();
-        preg_match_all('/Set-Cookie:(?<cookie>\s{0,}.*)$/im', $header, $cookies);
+        curl_exec($ch);
 
-        return $cookies['cookie'];
+        $data = (object) array(
+                    "curl_info" => (object) curl_getinfo($ch),
+                    "cookies" => $this->extract_cookies(curl_exec($ch))
+        );
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_NOBODY, false);
+        if (!empty($data->cookies)) {
+            curl_setopt($ch, CURLOPT_COOKIE, implode(';', $data->cookies));
+        }
+
+        $this->set_response(curl_exec($ch));
+        $this->set_status_code(curl_getinfo($ch, CURLINFO_HTTP_CODE));
+        if ($this->get_status_code() == 200) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
