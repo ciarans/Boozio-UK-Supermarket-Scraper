@@ -19,6 +19,7 @@ use SimpleXMLElement;
 
 class Item {
 
+
     private $sku;
     private $supermarket;
     private $item_name;
