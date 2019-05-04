@@ -26,14 +26,17 @@ class Item {
     private $price;
     private $on_offer;
 
+
+
     /**
      * Creates a Basket Item
      * 
      * @param int $sku SKU number of the product
      * @param string $supermarket Name of the supermarket
      * @param string $item_name Name of the item from the Supermarkets website
-     * @param string $price Price of the item on the companys website
+     * @param string $price Price of the item on the company's website
      * @param string $on_offer Whether the product iso n offer
+     *
      */
     public function __construct($sku, $supermarket, $item_name, $price, $on_offer) {
         $this->sku = $sku;
