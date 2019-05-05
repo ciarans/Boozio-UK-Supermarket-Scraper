@@ -171,4 +171,8 @@ class CUrl {
         return $this->url;
     }
 
+    public function newld(){
+
+    }
+
 }
