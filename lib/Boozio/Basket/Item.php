@@ -27,7 +27,6 @@ class Item {
     private $on_offer;
 
 
-
     /**
      * Creates a Basket Item
      * 
@@ -38,6 +37,8 @@ class Item {
      * @param string $on_offer Whether the product iso n offer
      *
      */
+
+
     public function __construct($sku, $supermarket, $item_name, $price, $on_offer) {
         $this->sku = $sku;
         $this->supermarket = $supermarket;
