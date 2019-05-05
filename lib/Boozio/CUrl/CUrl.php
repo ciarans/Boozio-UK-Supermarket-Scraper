@@ -162,13 +162,10 @@ class CUrl {
         $this->url = $url;
     }
 
-    /**
-     * Get set Url to CUrl
-     * 
-     * @return string Url that has been set for CUrl
-     */
     public function get_url() {
         return $this->url;
     }
+
+
 
 }
